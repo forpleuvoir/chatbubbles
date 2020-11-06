@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "github.forpleuvoir.chatbubbles.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "client.gui.ClientChatListenerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

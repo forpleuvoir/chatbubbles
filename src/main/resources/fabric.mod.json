@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "chatbubbles",
+  "version": "${version}",
+  "name": "Chatbubbles",
+  "description": "",
+  "authors": [
+    "forpleuvoir"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/chatbubbles/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "github.forpleuvoir.chatbubbles.client.FabricModChatBubbles"
+    ]
+  },
+  "mixins": [
+    "chatbubbles.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.10.0+build.208",
+    "fabric": "*",
+    "minecraft": "1.16.*"
+  }
+}
