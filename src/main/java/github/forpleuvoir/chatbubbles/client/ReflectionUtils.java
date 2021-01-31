@@ -3,6 +3,8 @@ package github.forpleuvoir.chatbubbles.client;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author forpleuvoir
@@ -177,5 +179,32 @@ public class ReflectionUtils {
         } catch (ClassNotFoundException var2) {
             return false;
         }
+    }
+
+    public static void setPrivateFieldValueByType(Object o, Class<?> fieldClassType, Object value, int index) {
+        int counter = 0;
+        Class<?> clazz = o.getClass();
+
+        List<Field> fieldList = new ArrayList<>();
+        Class<?> tempClass = clazz;
+        while (tempClass != null) {//当父类为null的时候说明到达了最上层的父类(Object类).
+            fieldList.addAll(Arrays.asList(tempClass.getDeclaredFields()));
+            tempClass = tempClass.getSuperclass(); //得到父类,然后赋给自己
+        }
+
+        //Field[] fields = clazz.getDeclaredFields();
+        for (Field field : fieldList) {
+            if (field.getType().equals(fieldClassType)) {
+                if (counter == index) {
+                    try {
+                        field.setAccessible(true);
+                        field.set(o, value);
+                    } catch (Exception e) {
+                    }
+                }
+                ++counter;
+            }
+        }
+
     }
 }
