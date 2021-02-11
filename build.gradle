@@ -2,12 +2,13 @@ plugins {
     id 'fabric-loom' version '0.5.34'
     id 'maven-publish'
 }
+def time = new Date().format("yyyyMMdd")
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = project.archives_base_name
-version = project.mod_version
+version = project.mod_version+"-"+time+"-minecraft."+project.minecraft_version
 group = project.maven_group
 
 dependencies {
